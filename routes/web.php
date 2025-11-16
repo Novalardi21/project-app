@@ -8,3 +8,4 @@ return redirect()->route('maps.index');
 });
 
 Route::get('/maps', [MapController::class, 'index'])->name('maps.index');
+
