@@ -13,6 +13,9 @@
     /* This color custom */
     --color-green: #2f5d50;
     --color-bt: #85cbb7;
+    --color-text: #676767;
+    --color-bg: #fbf8f5;
+    --color-card: #96c2b6;
 }
 
 /* Base card */
