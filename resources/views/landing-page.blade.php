@@ -22,7 +22,7 @@
             <!-- TOMBOL -->
             <div class="flex flex-col sm:flex-row gap-4">
 
-                <a href="#"
+                <a href="/maps"
                     class="bg-bt text-green font-semibold px-4 py-2 rounded-3xl shadow-md flex items-center gap-2 mr-15
                    transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
