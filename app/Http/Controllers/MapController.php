@@ -31,6 +31,6 @@ class MapController extends Controller
             ],
         ];
 
-        return view('maps.index', compact('locations'));
+        return view('pages.maps.index', compact('locations'));
     }
 }
