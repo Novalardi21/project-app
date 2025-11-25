@@ -242,10 +242,8 @@
                 <!-- BUTTON -->
                 <div class="flex justify-center mt-4">
                     <a href="/donate"
-                        class="group relative bg-[#90C5BA] text-green font-semibold px-8 py-3 rounded-2xl shadow-md 
-               flex items-center gap-3 
-               transition-all duration-300 ease-out
-               hover:bg-[#7EB5AA] hover:scale-105 hover:-translate-y-1 hover:shadow-xl">
+                        class="group relative bg-[#90C5BA] text-green font-semibold px-8 py-3 rounded-2xl shadow-md flex items-center gap-3 transition-all duration-300 ease-out
+                                hover:bg-[#7EB5AA] hover:scale-105 hover:-translate-y-1 hover:shadow-xl">
 
                         <span>Mulai Berdonasi Sekarang</span>
 

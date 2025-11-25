@@ -77,12 +77,63 @@
             </a>
 
             {{-- Tombol CTA --}}
-            <a href="#"
-                class="text-white text-sm md:text-md px-5 py-2 md:ml-20
-               border border-white/50 rounded-xl transition-all duration-300
-               hover:bg-green-300 hover:text-green hover:border-transparent hover:shadow-[0_0_15px_rgba(134,239,172,0.6)] active:scale-95">
-                Mulai Donasi
-            </a>
+            {{-- Tombol kanan: sebelum login = Mulai Donasi, sesudah login = Akun --}}
+            <div class="md:ml-20 ml-0 mt-4 md:mt-0">
+                @guest
+                    <a href="{{ route('login') }}"
+                        class="text-white text-sm md:text-md px-5 py-2 border border-white/50 rounded-xl transition-all duration-300
+                  hover:bg-green-300 hover:text-green hover:border-transparent hover:shadow-[0_0_15px_rgba(134,239,172,0.6)] active:scale-95">
+                        Mulai Donasi
+                    </a>
+                @else
+                    @php
+                        $user = Auth::user();
+                        $hasAvatar = filled($user->avatar);
+                        $initial = strtoupper(mb_substr($user->name ?? 'U', 0, 1));
+                    @endphp
+
+                    <div class="relative group">
+                        <button type="button"
+                            class="flex items-center gap-2 text-white text-sm md:text-md px-5 py-2
+                       border border-white/50 rounded-xl transition-all duration-300
+                       hover:bg-green-300 hover:text-green hover:border-transparent
+                       hover:shadow-[0_0_15px_rgba(134,239,172,0.6)] active:scale-95">
+
+                            {{-- Avatar / Initial --}}
+                            @if ($hasAvatar)
+                                <img src="{{ trim($user->avatar) }}" alt="Avatar" referrerpolicy="no-referrer"
+                                    class="w-7 h-7 rounded-full object-cover ring-2 ring-white/60 bg-white/20">
+                            @else
+                                <div
+                                    class="w-7 h-7 rounded-full ring-2 ring-white/60 bg-white/20
+                               flex items-center justify-center">
+                                    <span class="text-xs font-semibold text-white">
+                                        {{ $initial }}
+                                    </span>
+                                </div>
+                            @endif
+
+                            <span>Akun</span>
+                        </button>
+
+                        {{-- dropdown --}}
+                        <div
+                            class="absolute right-0 mt-2 w-40 bg-white text-sm text-gray-700 rounded-xl shadow-lg py-1
+                       hidden group-hover:block">
+                            <div class="px-4 py-2 border-b text-xs text-gray-500">
+                                {{ $user->name }}
+                            </div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endguest
+            </div>
+
 
         </div>
     </nav>
