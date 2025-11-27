@@ -92,12 +92,12 @@
                         $initial = strtoupper(mb_substr($user->name ?? 'U', 0, 1));
                     @endphp
 
-                    <div class="relative group">
-                        <button type="button"
-                            class="flex items-center gap-2 text-white text-sm md:text-md px-5 py-2
-                       border border-white/50 rounded-xl transition-all duration-300
-                       hover:bg-green-300 hover:text-green hover:border-transparent
-                       hover:shadow-[0_0_15px_rgba(134,239,172,0.6)] active:scale-95">
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open" type="button"
+                            class="flex items-center gap-2 text-white text-sm md:text-md 
+px-3 py-2 border border-white/50 rounded-xl transition-all duration-300
+hover:bg-green-300 hover:text-green hover:border-transparent hover:shadow-[0_0_15px_rgba(134,239,172,0.6)]
+active:scale-95 cursor-pointer select-none">
 
                             {{-- Avatar / Initial --}}
                             @if ($hasAvatar)
@@ -105,32 +105,32 @@
                                     class="w-7 h-7 rounded-full object-cover ring-2 ring-white/60 bg-white/20">
                             @else
                                 <div
-                                    class="w-7 h-7 rounded-full ring-2 ring-white/60 bg-white/20
-                               flex items-center justify-center">
-                                    <span class="text-xs font-semibold text-white">
-                                        {{ $initial }}
-                                    </span>
+                                    class="w-7 h-7 rounded-full ring-2 ring-white/60 bg-white/20 flex items-center justify-center">
+                                    <span class="text-xs font-semibold text-white">{{ $initial }}</span>
                                 </div>
                             @endif
 
-                            <span>Akun</span>
+                            <span> {{ $user->name }}</span>
                         </button>
 
-                        {{-- dropdown --}}
-                        <div
-                            class="absolute right-0 mt-2 w-40 bg-white text-sm text-gray-700 rounded-xl shadow-lg py-1
-                       hidden group-hover:block">
-                            <div class="px-4 py-2 border-b text-xs text-gray-500">
-                                {{ $user->name }}
-                            </div>
+                        {{-- Dropdown --}}
+                        <div x-show="open" @click.outside="open = false" x-transition
+                            class="absolute right-0 mt-2 w-44 bg-white text-sm text-gray-700 rounded-xl shadow-lg py-2">
+
+                            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-slate-200 transition">
+                                Profile
+                            </a>
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                                <button type="submit"
+                                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-slate-200 transition">
                                     Logout
                                 </button>
                             </form>
                         </div>
                     </div>
+
                 @endguest
             </div>
 

@@ -129,8 +129,6 @@
     transform transition-all duration-500 ease-out
     hover:scale-105 hover:-translate-y-2 relative">
 
-
-
                         <!-- Badge Keluar dari Card -->
                         <div class="absolute -top-6 -left-6">
                             <div

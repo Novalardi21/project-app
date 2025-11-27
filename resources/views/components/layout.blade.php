@@ -15,6 +15,9 @@
 
     <!-- pemanggilan tailwind memakai build tools vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- Ini alpine js, untuk interaktifitas halaman gess --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Green Drop</title>
 </head>
 
