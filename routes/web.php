@@ -5,6 +5,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MenuController::class, 'index'])->name('landing');
@@ -33,3 +34,7 @@ Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])
     ->name('google.callback')
     ->middleware('guest');
+
+
+// dashboard admin
+Route::get('/dashboard', [AdminController::class, 'HalamanAdmin'])->name('admin.index');
