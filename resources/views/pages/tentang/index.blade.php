@@ -18,7 +18,7 @@
                     TENTANG KAMI
                 </span>
                 <h1 class="text-4xl md:text-5xl font-extrabold text-green mb-6 leading-tight">
-                    Mengenal PetaBaik Lebih Dekat
+                    Mengenal GreenDrop Lebih Dekat
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                     Platform berbasis peta yang memudahkan distribusi barang donasi kepada mereka yang membutuhkan,

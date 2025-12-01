@@ -9,33 +9,22 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
 
             {{-- Search --}}
-            <div class="relative w-full md:w-1/3">
-                <input type="text"
-                    class="w-full border border-gray-300 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-emerald-400"
-                    placeholder="Search">
+            <div class="relative w-full md:w-[450px]">
+                <form method="GET" action="{{ route('admin.pengguna') }}" class="relative w-full">
+                    <input type="text" name="search" value="{{ $search }}"
+                        class="w-full border border-gray-300 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-emerald-400"
+                        placeholder="Cari nama atau email...">
 
-                <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                    stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="m21 21-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
-                </svg>
+                    <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
+                    </svg>
+                </form>
             </div>
 
-            {{-- Button Ubah Status --}}
-            <button
-                class="cursor-pointer text-white px-5 py-2 rounded-lg flex items-center gap-2 shadow
-                       transition-all duration-300 ease-out
-                       hover:-translate-y-1 hover:scale-105 hover:shadow-lg
-                       hover:bg-green"
-                style="background-color: var(--color-green);">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path d="M21 7H3V5h18v2zm0 3H3v2h18v-2zm0 5H3v2h18v-2z" />
-                </svg>
 
-                Ubah Status
-            </button>
 
         </div>
 
@@ -61,29 +50,31 @@
                     </thead>
 
                     <tbody>
-                        @php
-                            $data = [
-                                ['id' => 1, 'name' => 'Naya', 'email' => 'naya@gmail.com', 'status' => 'Aktif'],
-                                ['id' => 2, 'name' => 'Jeje', 'email' => 'jeje@gmail.com', 'status' => 'Nonaktif'],
-                                ['id' => 3, 'name' => 'Taro', 'email' => 'taro@gmail.com', 'status' => 'Nonaktif'],
-                                ['id' => 4, 'name' => 'Rina', 'email' => 'rina@gmail.com', 'status' => 'Aktif'],
-                                ['id' => 5, 'name' => 'Mutiara', 'email' => 'mutiara@gmail.com', 'status' => 'Aktif'],
-                                ['id' => 6, 'name' => 'Rania', 'email' => 'rania@gmail.com', 'status' => 'Aktif'],
-                                ['id' => 7, 'name' => 'Jelita', 'email' => 'jelita@gmail.com', 'status' => 'Nonaktif'],
-                                ['id' => 8, 'name' => 'Daffa', 'email' => 'daffa@gmail.com', 'status' => 'Nonaktif'],
-                            ];
-                        @endphp
-
-                        @foreach ($data as $i => $item)
+                        @foreach ($users as $i => $user)
                             <tr>
-                                <td class="border px-3 py-2 text-center whitespace-nowrap">{{ $i + 1 }}</td>
-                                <td class="border px-3 py-2 text-center whitespace-nowrap">{{ $item['id'] }}</td>
-                                <td class="border px-3 py-2 whitespace-nowrap">{{ $item['name'] }}</td>
-                                <td class="border px-3 py-2 whitespace-nowrap">{{ $item['email'] }}</td>
+                                {{-- Nomor urut --}}
+                                <td class="border px-3 py-2 text-center whitespace-nowrap">
+                                    {{ $i + 1 }}
+                                </td>
+
+                                {{-- ID pengguna --}}
+                                <td class="border px-3 py-2 text-center whitespace-nowrap">
+                                    {{ $user->id }}
+                                </td>
+
+                                {{-- Nama --}}
+                                <td class="border px-3 py-2 whitespace-nowrap">
+                                    {{ $user->name }}
+                                </td>
+
+                                {{-- Email --}}
+                                <td class="border px-3 py-2 whitespace-nowrap">
+                                    {{ $user->email }}
+                                </td>
 
                                 {{-- STATUS BADGE --}}
                                 <td class="border px-3 py-2 text-center whitespace-nowrap">
-                                    @if ($item['status'] === 'Aktif')
+                                    @if ($user->status === 'aktif')
                                         <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs shadow">
                                             Aktif
                                         </span>
@@ -94,21 +85,25 @@
                                     @endif
                                 </td>
 
-                                {{-- ACTION BUTTONS --}}
+                                {{-- ACTION --}}
                                 <td class="border px-3 py-2 text-center whitespace-nowrap flex gap-2 justify-center">
-                                    <button
+                                    {{-- <button
                                         class="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-1 rounded-lg text-sm shadow">
                                         Detail
-                                    </button>
+                                    </button> --}}
 
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-lg text-sm shadow">
-                                        Ubah Status
-                                    </button>
+                                    <form action="{{ route('admin.users.toggleStatus', $user->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-lg text-sm shadow">
+                                            Ubah Status
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
+
 
                 </table>
             </div>

@@ -51,3 +51,6 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])
 Route::get('/dashboard', [AdminController::class, 'HalamanAdmin'])->name('admin.index');
 Route::get('/donasi', [AdminController::class, 'HalamanTitikDonasi'])->name('admin.titik-donasi');
 Route::get('/pengguna', [AdminController::class, 'HalamanPengguna'])->name('admin.pengguna');
+
+Route::post('/admin/pengguna/{id}/toggle-status', [AdminController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
+
