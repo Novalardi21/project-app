@@ -16,6 +16,17 @@ Route::get('/maps', [MapController::class, 'index'])->name('maps.index');
 // donation
 Route::get('/donate', [DonationController::class, 'donation'])->name('donation.index');
 
+// profile
+Route::get('/profile', function () {
+    return view('pages.profile.index');
+})->name('profile.index');
+
+
+// about
+Route::get('/about', function () {
+    return view('pages.tentang.index');
+})->name('about.index');
+
 // login
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -38,3 +49,5 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])
 
 // dashboard admin
 Route::get('/dashboard', [AdminController::class, 'HalamanAdmin'])->name('admin.index');
+Route::get('/donasi', [AdminController::class, 'HalamanTitikDonasi'])->name('admin.titik-donasi');
+Route::get('/pengguna', [AdminController::class, 'HalamanPengguna'])->name('admin.pengguna');

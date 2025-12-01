@@ -7,7 +7,7 @@
 
         {{-- GRID SUMMARY --}}
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-            
+
             {{-- Total Donasi Masuk --}}
             <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 text-center">
                 <p class="text-sm text-gray-500 font-medium">Total Donasi Masuk</p>
@@ -121,7 +121,7 @@
 
                 <div class="w-full h-[350px] rounded-xl overflow-hidden border">
                     {{-- Placeholder map (nanti bisa diganti Leaflet/Google Maps) --}}
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Indonesia&zoom=5&size=600x350&key=YOUR_KEY"
+                    <img src="https://visgl.github.io/react-google-maps/images/examples/basic-map.jpg"
                         class="w-full h-full object-cover" alt="Map Placeholder">
                 </div>
             </div>

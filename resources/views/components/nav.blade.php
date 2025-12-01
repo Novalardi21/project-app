@@ -34,7 +34,7 @@
                 Beranda
                 {{-- Garis Animasi (Center Out) --}}
                 <span
-                    class="absolute -bottom-1 left-0 w-full h-[2px] bg-green-300 rounded-full
+                    class="absolute -bottom-1 left-0 w-full h-0.5 bg-green-300 rounded-full
                        origin-center transform transition-transform duration-300 ease-out
                        {{ request()->is('/') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100' }}">
                 </span>
@@ -46,7 +46,7 @@
                {{ request()->is('maps') ? 'text-green-300 font-semibold' : 'text-white hover:text-green-200' }}">
                 Peta Donasi
                 <span
-                    class="absolute -bottom-1 left-0 w-full h-[2px] bg-green-300 rounded-full
+                    class="absolute -bottom-1 left-0 w-full h-0.5 bg-green-300 rounded-full
                        origin-center transform transition-transform duration-300 ease-out
                        {{ request()->is('maps') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100' }}">
                 </span>
@@ -58,19 +58,19 @@
                {{ request()->is('donate') ? 'text-green-300 font-semibold' : 'text-white hover:text-green-200' }}">
                 Kirim Donasi
                 <span
-                    class="absolute -bottom-1 left-0 w-full h-[2px] bg-green-300 rounded-full
+                    class="absolute -bottom-1 left-0 w-full h-0.5 bg-green-300 rounded-full
                        origin-center transform transition-transform duration-300 ease-out
                        {{ request()->is('donate') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100' }}">
                 </span>
             </a>
 
             {{-- Link: Tentang --}}
-            <a href="/about"
+            <a href="{{ route('about.index') }}"
                 class="group relative inline-block text-sm md:text-md transition-colors duration-300
-               {{ request()->is('about') ? 'text-green-300 font-semibold' : 'text-white hover:text-green-200' }}">
+               {{ request()->is('about.index') ? 'text-green-300 font-semibold' : 'text-white hover:text-green-200' }}">
                 Tentang
                 <span
-                    class="absolute -bottom-1 left-0 w-full h-[2px] bg-green-300 rounded-full
+                    class="absolute -bottom-1 left-0 w-full h-0.5 bg-green-300 rounded-full
                        origin-center transform transition-transform duration-300 ease-out
                        {{ request()->is('about') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100' }}">
                 </span>
@@ -113,19 +113,65 @@ active:scale-95 cursor-pointer select-none">
                             <span> {{ $user->name }}</span>
                         </button>
 
-                        {{-- Dropdown --}}
-                        <div x-show="open" @click.outside="open = false" x-transition
-                            class="absolute right-0 mt-2 w-44 bg-white text-sm text-gray-700 rounded-xl shadow-lg py-2">
+                        {{-- Dropdown Container --}}
+                        <div x-show="open" @click.outside="open = false" style="display: none;" {{-- Kita gunakan x-init dan $watch untuk mentrigger GSAP saat 'open' berubah --}}
+                            x-init="$watch('open', value => {
+                                if (value) {
+                                    // Animasi Masuk: Item muncul satu per satu (Stagger)
+                                    gsap.fromTo('.menu-item', { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.1, ease: 'back.out(1.7)' });
+                                }
+                            })"
+                            class="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50 origin-top-right">
 
-                            <a href="#" class="block px-4 py-2 rounded-lg hover:bg-slate-200 transition">
-                                Profile
+                            {{-- 1. PROFILE LINK --}}
+                            <a href="{{ route('profile.index') }}"
+                                class="menu-item group flex items-center gap-3 px-5 py-3 text-sm font-medium text-gray-600 transition-colors relative">
+
+                                {{-- Icon Profile --}}
+                                <div class="icon-box relative z-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="text-green">
+                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+
+                                <span class="relative z-10 group-hover:text-green transition-colors duration-300">Profile
+                                    Saya</span>
+
+                                {{-- Background Hover Effect (Layer tersembunyi untuk animasi) --}}
+                                <div
+                                    class="absolute inset-0 bg-[#90C5BA]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
                             </a>
 
+                            <div class="h-px bg-gray-100 mx-4"></div> {{-- Separator Line --}}
+
+                            {{-- 2. LOGOUT FORM --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit"
-                                    class="w-full text-left px-4 py-2 rounded-lg hover:bg-slate-200 transition">
-                                    Logout
+                                    class="menu-item group w-full flex items-center gap-3 px-5 py-3 text-sm font-medium text-red-500 transition-colors relative">
+
+                                    {{-- Icon Logout --}}
+                                    <div class="icon-box relative z-10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                            <polyline points="16 17 21 12 16 7"></polyline>
+                                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                                        </svg>
+                                    </div>
+
+                                    <span
+                                        class="relative z-10 group-hover:text-red-700 transition-colors duration-300">Keluar</span>
+
+                                    {{-- Background Hover Effect --}}
+                                    <div
+                                        class="absolute inset-0 bg-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    </div>
                                 </button>
                             </form>
                         </div>

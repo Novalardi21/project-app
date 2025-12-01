@@ -36,7 +36,7 @@ class AuthController extends Controller
         // cari user berdasarkan email
         $user = User::where('email', $data['email'])->first();
 
-        if (! $user) {
+        if (!$user) {
             return back()->withErrors([
                 'email' => 'Email atau password salah.',
             ])->onlyInput('email');
@@ -57,7 +57,7 @@ class AuthController extends Controller
         }
 
         // 2) kalau belum valid, cek sebagai plaintext
-        if (! $valid && $storedPassword === $inputPassword) {
+        if (!$valid && $storedPassword === $inputPassword) {
             $valid = true;
 
             // upgrade ke bcrypt supaya next login aman
@@ -67,7 +67,7 @@ class AuthController extends Controller
         }
 
         // 3) kalau tetap tidak valid → gagal login
-        if (! $valid) {
+        if (!$valid) {
             return back()->withErrors([
                 'email' => 'Email atau password salah.',
             ])->onlyInput('email');

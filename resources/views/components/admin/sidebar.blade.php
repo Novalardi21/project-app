@@ -9,9 +9,9 @@
     <nav class="space-y-2">
 
         {{-- Dashboard --}}
-        <a href="#"
+        <a href="{{ route('admin.index') }}"
             class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium 
-            {{ request()->routeIs('admin.dashboard') ? 'bg-emerald-200 text-gray-900' : 'text-gray-700 hover:bg-gray-100' }}">
+            {{ request()->routeIs('admin.index') ? 'bg-card text-gray-900' : 'text-gray-700 hover:bg-gray-100' }}">
             {{-- Icon Home --}}
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
                 viewBox="0 0 24 24">
@@ -22,9 +22,9 @@
         </a>
 
         {{-- Titik Donasi --}}
-        <a href="#"
+        <a href="{{ route('admin.titik-donasi') }}"
             class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium 
-            {{ request()->routeIs('admin.donasi') ? 'bg-emerald-200 text-gray-900' : 'text-gray-700 hover:bg-gray-100' }}">
+            {{ request()->routeIs('admin.titik-donasi') ? 'bg-card text-gray-900' : 'text-gray-700 hover:bg-gray-100' }}">
             {{-- Icon Map Pin --}}
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor"
                 stroke-width="2" viewBox="0 0 24 24">
@@ -35,9 +35,9 @@
         </a>
 
         {{-- Pengguna --}}
-        <a href="#"
+        <a href="{{ route('admin.pengguna') }}"
             class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium 
-            {{ request()->routeIs('admin.users') ? 'bg-emerald-200 text-gray-900' : 'text-gray-700 hover:bg-gray-100' }}">
+            {{ request()->routeIs('admin.pengguna') ? 'bg-card text-gray-900' : 'text-gray-700 hover:bg-gray-100' }}">
             {{-- Icon User --}}
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor"
                 stroke-width="2" viewBox="0 0 24 24">

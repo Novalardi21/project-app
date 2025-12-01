@@ -34,7 +34,6 @@
                         <span class="text-sm">Lihat Peta Donasi</span>
                     </a>
 
-
                     <a href="#"
                         class="border-white border font-semibold px-4 py-2 rounded-3xl shadow-md flex items-center gap-2 mr-15
                    transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl justify-center">
