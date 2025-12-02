@@ -23,7 +23,7 @@
                         <div class="space-y-4 max-h-[66vh] overflow-auto pr-2">
                             @foreach ($locations as $loc)
                                 <div class="donation-card flex gap-3 p-4 border border-emerald-50 rounded-lg hover:shadow-lg transition bg-white"
-                                    data-lat="{{ $loc['lat'] }}" data-lng="{{ $loc['lng'] }}">
+                                    data-lat="{{ $loc->lat }}" data-lng="{{ $loc->lng }}">
                                     <div
                                         class="flex-shrink-0 w-11 h-11 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-800">
                                         <!-- pin icon -->
@@ -37,10 +37,9 @@
                                     </div>
 
                                     <div class="flex-1">
-                                        <div class="font-medium text-sm text-emerald-900">{{ $loc['name'] }}</div>
-                                        <div class="text-xs text-gray-500 mt-1">{{ $loc['address'] }}</div>
+                                        <div class="font-medium text-sm text-emerald-900">{{ $loc->name }}</div>
+                                        <div class="text-xs text-gray-500 mt-1">{{ $loc->address }}</div>
 
-                                        <!-- jam & telepon sejajar -->
                                         <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
                                             <div class="flex items-center gap-2">
                                                 <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none"
@@ -49,35 +48,37 @@
                                                         stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
-                                                <span>{{ $loc['hours'] ?? '—' }}</span>
+                                                <span>{{ $loc->hours ?? '—' }}</span>
                                             </div>
 
                                             <div class="flex items-center gap-2">
                                                 <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2..." stroke="#94a3b8"
-                                                        stroke-width="1.2" stroke-linecap="round"
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.13 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.13-8.63A2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.7 2.78a2 2 0 0 1-.45 2.11L8.09 9.91a14 14 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.11-.45c.88.35 1.82.58 2.78.7A2 2 0 0 1 22 16.92z"
+                                                        stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
-                                                <span>{{ $loc['phone'] ?? '—' }}</span>
+                                                <span>{{ $loc->phone ?? '—' }}</span>
                                             </div>
                                         </div>
 
                                         <div class="mt-3 flex flex-wrap gap-2">
-                                            @if (!empty($loc['items']))
-                                                @foreach (explode(',', $loc['items']) as $badge)
+                                            @if (!empty($loc->items))
+                                                @foreach (explode(',', $loc->items) as $badge)
                                                     <span
                                                         class="text-xs bg-emerald-50 text-emerald-800 px-2 py-1 rounded-full">{{ trim($badge) }}</span>
                                                 @endforeach
                                             @endif
                                         </div>
 
-                                        @if (!empty($loc['note']))
-                                            <div class="mt-3 text-xs text-gray-400">{{ $loc['note'] }}</div>
+                                        @if (!empty($loc->note))
+                                            <div class="mt-3 text-xs text-gray-400">{{ $loc->note }}</div>
                                         @endif
                                     </div>
                                 </div>
                             @endforeach
+
                         </div>
 
                         <div class="mt-6">

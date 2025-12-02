@@ -50,6 +50,10 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])
 // dashboard admin
 Route::get('/dashboard', [AdminController::class, 'HalamanAdmin'])->name('admin.index');
 Route::get('/donasi', [AdminController::class, 'HalamanTitikDonasi'])->name('admin.titik-donasi');
+Route::get('/donasi/tambah', [AdminController::class, 'HalamanTambahTitikDonasi'])->name('admin.tambah-donasi');
+Route::post('/admin/store', [AdminController::class, 'StoreDonasi'])->name('admin.titik.store');
+Route::get('/donasi/{id}/edit', [AdminController::class, 'HalamanEditDonasi'])->name('admin.titik.edit');
+Route::post('/donasi/{id}/update', [AdminController::class, 'UpdateDonasi'])->name('admin.titik.update');
 Route::get('/pengguna', [AdminController::class, 'HalamanPengguna'])->name('admin.pengguna');
 
 Route::post('/admin/pengguna/{id}/toggle-status', [AdminController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
