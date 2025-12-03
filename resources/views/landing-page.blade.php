@@ -20,11 +20,11 @@
                 </p>
 
                 <!-- TOMBOL -->
-                <div class="flex flex-col sm:flex-row gap-4">
+                <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
 
                     <a href="#"
-                        class="bg-bt text-green font-semibold px-4 py-2 rounded-3xl shadow-md flex items-center gap-2 mr-15
-                   transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
+                        class="bg-bt text-green font-semibold px-4 py-2 rounded-3xl shadow-md flex items-center gap-2
+        transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
                             <path fill="#2f5d50"
                                 d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4s-4 1.794-4 4s1.794 4 4 4m0-6c1.103 0 2 .897 2 2s-.897 2-2 2s-2-.897-2-2s.897-2 2-2" />
@@ -35,15 +35,14 @@
                     </a>
 
                     <a href="#"
-                        class="border-white border font-semibold px-4 py-2 rounded-3xl shadow-md flex items-center gap-2 mr-15
-                   transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl justify-center">
+                        class="border-white border font-semibold px-4 py-2 rounded-3xl shadow-md flex items-center gap-2
+        transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl justify-center">
 
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-7 sm:h-7" viewBox="0 0 24 24"
                             fill="none">
                             <path fill="none" stroke="#ffffff" stroke-linejoin="round" stroke-width="1.5"
                                 d="m12 12l8.073-4.625M12 12v9.25M12 12L7.963 9.688m12.11-2.313a3.17 3.17 0 0 0-1.165-1.156L16.25 4.696m3.823 2.679c.275.472.427 1.015.427 1.58v6.09a3.15 3.15 0 0 1-1.592 2.736l-5.316 3.046A3.2 3.2 0 0 1 12 21.25M3.926 7.375a3.14 3.14 0 0 0-.426 1.58v6.09c0 1.13.607 2.172 1.592 2.736l5.316 3.046A3.2 3.2 0 0 0 12 21.25M3.926 7.375a3.17 3.17 0 0 1 1.166-1.156l5.316-3.046a3.2 3.2 0 0 1 3.184 0l2.658 1.523M3.926 7.375l4.037 2.313m0 0l8.287-4.992" />
                         </svg>
-
                         <span class="text-white text-sm">Kirim Donasi</span>
                     </a>
                 </div>

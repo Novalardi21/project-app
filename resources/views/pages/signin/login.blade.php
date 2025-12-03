@@ -20,7 +20,7 @@
 
     <!-- CARD BESAR -->
     <div
-        class="w-[92%] max-w-[1500px] bg-white rounded-[32px] shadow-2xl border border-gray-100 overflow-hidden
+        class="w-[92%] max-w-[1500px] bg-white rounded-4xl shadow-2xl border border-gray-100 overflow-hidden
                grid grid-cols-1 md:grid-cols-2 min-h-[660px]">
 
         {{-- LEFT PANEL (HIJAU) --}}

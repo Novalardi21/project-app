@@ -109,9 +109,9 @@
                                 </div>
 
                                 {{-- Tombol Simpan (Style sesuai referensi button "Mulai Donasi") --}}
-                                <div class="pt-4 flex justify-end">
+                                <div class="pt-4 flex justify-center">
                                     <button type="submit"
-                                        class="bg-[#90C5BA] text-[#2f5d50] font-bold px-8 py-3 rounded-2xl shadow-md flex items-center gap-2 transition-all duration-300 ease-out hover:bg-[#7EB5AA] hover:scale-105 hover:-translate-y-1 hover:shadow-xl">
+                                        class="bg-card text-green font-bold px-8 py-3 rounded-2xl shadow-md flex items-center gap-2 transition-all duration-300 ease-out hover:bg-[#7EB5AA] hover:scale-105 hover:-translate-y-1 hover:shadow-xl">
                                         <span>Simpan Perubahan</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
