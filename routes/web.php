@@ -1,14 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MapController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\MapController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MenuController::class, 'index'])->name('landing');
 
@@ -47,7 +47,6 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])
     ->name('google.callback')
     ->middleware('guest');
 
-
 // dashboard admin
 Route::get('/dashboard', [AdminController::class, 'HalamanAdmin'])->name('admin.index');
 Route::get('/donasi', [AdminController::class, 'HalamanTitikDonasi'])->name('admin.titik-donasi');
@@ -62,7 +61,6 @@ Route::post('/admin/pengguna/{id}/toggle-status', [AdminController::class, 'togg
 Route::get('/admin/donasi', [AdminController::class, 'HalamanDonasi'])->name('admin.donasi');
 Route::get('/admin/donasi/{id}/edit', [AdminController::class, 'HalamanDetailDonation'])->name('admin.donasi.edit');
 Route::patch('/admin/donasi/{id}/update-status', [AdminController::class, 'UpdateDonasiStatus'])->name('admin.donasi.update-status');
-
 
 Route::post('/donation/verify', [DonationController::class, 'uploadProof'])
     ->name('donation.uploadProof')

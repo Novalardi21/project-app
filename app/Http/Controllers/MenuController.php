@@ -6,6 +6,6 @@ class MenuController extends Controller
 {
     public function index()
     {
-        return view('landing-page');   
+        return view('landing-page');
     }
 }

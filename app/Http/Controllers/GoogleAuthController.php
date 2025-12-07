@@ -45,12 +45,12 @@ class GoogleAuthController extends Controller
             ->first();
 
         // 2. Kalau belum ada, cek berdasarkan email (mungkin pernah daftar manual)
-        if (!$user && $googleUser->getEmail()) {
+        if (! $user && $googleUser->getEmail()) {
             $user = User::where('email', $googleUser->getEmail())->first();
         }
 
         // 3. Kalau tetap belum ada -> buat user baru
-        if (!$user) {
+        if (! $user) {
             $user = User::create([
                 'name' => $googleUser->getName() ?? $googleUser->getNickname() ?? 'User Google',
                 'email' => $googleUser->getEmail(),
