@@ -34,5 +34,3 @@ class Donation extends Model
         return $this->belongsTo(DonationLocation::class, 'donation_location_id');
     }
 }
-
-

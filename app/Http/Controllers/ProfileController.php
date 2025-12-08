@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Donation;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -24,6 +24,7 @@ class ProfileController extends Controller
 
         // // Hitung total (opsional, sesuai kodemu sebelumnya)
         $totalDonations = $myDonations->count();
+
         return view('pages.profile.index', compact('user', 'totalDonations', 'myDonations'));
     }
 
@@ -32,7 +33,7 @@ class ProfileController extends Controller
     {
 
         $role = Session::get('role');
-        if (!in_array($role, ['user'])) {
+        if (! in_array($role, ['user'])) {
             abort(403, 'Akses ditolak');
         }
         $user = Auth::user();
