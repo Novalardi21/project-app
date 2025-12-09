@@ -295,7 +295,7 @@
                     <div>
                         <label class="text-sm font-medium text-gray-700">Nomor Telepon <span
                                 class="text-red-500">*</span></label>
-                        <input type="tel" name="phone" value="{{ old('phone') }}"
+                        <input type="number" name="phone" value="{{ old('phone') }}"
                             placeholder="Contoh: 081234567890" required minlength="10" maxlength="20"
                             pattern="^(\+62|62|0)[0-9]{8,15}$" title="Gunakan format 08xx atau 628xx (hanya angka)"
                             class="w-full mt-1 p-3 rounded-lg shadow-sm bg-[#faf6f2] border @error('phone') border-red-500 @else border-gray-200 @enderror focus:ring-[#256049] focus:border-[#256049]">
